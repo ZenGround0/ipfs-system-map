@@ -1,44 +1,117 @@
 <!doctype html>
 <html>
 <head>
-  <title>Network | Basic usage</title>
+  <title>IPFS System Map</title>
 
   <script type="text/javascript" src="js/node_modules/vis/dist/vis.js"></script>
   <link href="js/node_modules/vis/dist/vis-network.min.css" rel="stylesheet" type="text/css" />
 
   <style type="text/css">
     #mynetwork {
-      width: 600px;
-      height: 400px;
+      width: 1000px;
+      height: 600px;
       border: 1px solid lightgray;
     }
   </style>
 </head>
 <body>
 
-<img src="img/libp2p.png" width=100> </img>
+<span>
+  <img src="img/libp2p.png" width=100> </img>
+</span>
+<span>
+  <img src="img/mformats.png" width=80> </img>
+</span>
+<span>
+  <img src="img/ipfs.png" width=100> </img>
+</span>
+<span>
+  <img src="img/ipld.png" width=80> </img>
+</span>
 
 <div id="mynetwork"></div>
 
 <script type="text/javascript">
   // create an array with nodes
   var nodes = new vis.DataSet([
-    {id: , label: 'Node 1'},
-    {id: 2, label: 'Node 2'},
-    {id: 3, label: 'Node 3'},
-    {id: 4, label: 'Node 4'},
-    {id: 5, label: 'Node 5'}
+    // libp2p system components
+    {id: 1, label: 'Host',  group: 2},
+    {id: 2, label: 'Net',  group: 2},
+    {id: 3, label: 'Peerstore', group: 2},
+    {id: 4, label: 'Protocol',  group: 2},
+    {id: 5, label: 'I-Conn', group: 2},
+    {id: 6, label: 'Peer', group: 2},
+    {id: 7, label: 'PeerStream', group: 2},
+    {id: 8, label: 'StreamMuxer', group: 2},
+    {id: 9, label: 'Transport', group: 2},
+    {id: 10, label: 'Nat', group: 2},
+    {id: 11, label: 'Crypto', group: 2},
+    {id: 12, label: 'Secio', group: 2},
+    {id: 13, label: 'I-ConnMgr', group:2},
+    
+    //multiformats system components
+    {id: 67, label: 'MultiHash', group: 1},
+    {id: 68, label: 'MultiBase', group: 1},
+    {id: 69, label: 'MultiAddr', group: 1},
+    {id: 70, label: 'MultiCodec', group: 1},
+    {id: 71, label: 'MultiStream', group: 1},
+    {id: 72, label: 'MultiAddrNet', group: 1}
   ]);
 
   // create an array with edges
-  var edges = new vis.DataSet([])
-  //var edges = new vis.DataSet([
-  //  {from: 1, to: 3},
-  //  {from: 1, to: 2},
-  //  {from: 2, to: 4},
-  //  {from: 2, to: 5},
-  //  {from: 3, to: 3}
-  //]);
+
+  var edges = new vis.DataSet([
+    {from: 1, to: 2, arrows:'to'},
+    {from: 1, to: 3, arrows:'to'},
+    {from: 1, to: 4, arrows:'to'},
+    {from: 1, to: 6, arrows:'to'},
+    {from: 1, to: 13, arrows:'to'},
+    {from: 1, to: 69, arrows:'to'},
+    {from: 1, to: 71, arrows:'to'},
+  
+    {from: 2, to: 3, arrows:'to'},
+    {from: 2, to: 4, arrows:'to'},
+    {from: 2, to: 5, arrows:'to'},
+    {from: 2, to: 69, arrows:'to'},
+  
+    {from: 3, to: 69, arrows:'to'},
+    {from: 3, to: 72, arrows:'to'},
+  {from: 3, to: 6, arrows:'to'},
+  {from: 3, to: 11, arrows:'to'},
+
+  
+    {from: 5, to: 69, arrows:'to'},
+    {from: 5, to: 6, arrows:'to'},
+    {from: 5, to: 9, arrows:'to'},
+    {from: 5, to: 11, arrows:'to'},
+
+    {from: 6, to: 67, arrows:'to'},
+    {from: 6, to: 11, arrows:'to'},
+  
+    {from: 7, to: 8, arrows:'to'},
+    {from: 7, to: 9, arrows:'to'},
+    {from: 7, to: 72, arrows:'to'},
+    {from: 7, to: 4, arrows:'to'},
+    
+    {from: 9, to: 72, arrows:'to'},
+
+    {from: 10, to: 72, arrows:'to'},
+
+    {from: 12, to: 11, arrows:'to'},
+    {from: 12, to: 6, arrows:'to'},
+
+    {from: 13, to: 5, arrows:'to'},
+  {from: 13, to: 2, arrows:'to'},
+  {from: 13, to: 6, arrows:'to'},
+  {from: 13, to: 8, arrows:'to'},
+  {from: 13, to: 69, arrows: 'to'},
+  
+    {from: 32, to: 69, arrows:'to'},
+
+    {from: 69, to: 67, arrows:'to'},
+
+    {from: 72, to: 69, arrows:'to'}
+  ]);
 
   // create a network
   var container = document.getElementById('mynetwork');
