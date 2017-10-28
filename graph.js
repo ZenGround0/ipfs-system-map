@@ -14,7 +14,7 @@
     {id: 12, label: 'Secio', group: 1},
     {id: 13, label: 'I-ConnMgr', group: 1},
     {id: 14, label: 'AddrUtil', group: 1},
-    {id: 15, label: 'WaddrTransport', group: 1},
+    {id: 15, label: 'WSTransport', group: 1},
     {id: 16, label: 'Floodsub', group: 1},
     {id: 17, label: 'BasicHost', group: 1},
     {id: 18, label: 'Circuit', group: 1},
@@ -35,9 +35,13 @@
     {id: 33, label: 'KBucket', group: 1},
     {id: 34, label: 'MeterConn', group: 1},
     {id: 35, label: 'MeterStream', group: 1},
-    {id: 36, label: '', group: 1},
-  
-  
+    {id: 36, label: 'NetUtil', group: 1},
+    {id: 37, label: 'GoStream', group: 1},
+    {id: 38, label: 'Raft', group: 1},  
+    {id: 39, label: 'SmuxMultistream', group: 1},
+    {id: 40, label: 'SmuxSpdystream', group: 1},  
+    {id: 41, label: 'SmuxYamux', group: 1},
+    {id: 42, label: 'Swarm', group: 1},
   
     //multiformats system components
     {id: 67, label: 'MultiHash', group: 2},
@@ -46,7 +50,8 @@
     {id: 70, label: 'MultiCodec', group: 2},
     {id: 71, label: 'MultiStream', group: 2},
     {id: 72, label: 'MultiAddrNet', group: 2},
-    {id: 73, label: 'MultiAddrDNS', group: 2}, 
+    {id: 73, label: 'MultiAddrDNS', group: 2},
+    {id: 74, label: 'MultiCodecPacked', group: 2}, 
 
     //IPFS system components
     {id: 80, label: 'Log', group: 3},
@@ -131,12 +136,13 @@
     {from: 2, to: 5, arrows:'to'},
     {from: 2, to: 6, arrows:'to'},
     {from: 2, to: 69, arrows:'to'},
-  
-    {from: 3, to: 69, arrows:'to'},
-    {from: 3, to: 72, arrows:'to'},
+      
     {from: 3, to: 6, arrows:'to'},
     {from: 3, to: 11, arrows:'to'},
-
+    {from: 3, to: 67, arrows:'to'},
+    {from: 3, to: 69, arrows:'to'},
+    {from: 3, to: 72, arrows:'to'},
+    {from: 3, to: 80, arrows:'to'},
   
     {from: 5, to: 69, arrows:'to'},
     {from: 5, to: 6, arrows:'to'},
@@ -145,29 +151,32 @@
     {from: 5, to: 11, arrows:'to'},
     {from: 5, to: 81, arrows:'to'},
 
-    {from: 6, to: 67, arrows:'to'},
     {from: 6, to: 11, arrows:'to'},
-  
+    {from: 6, to: 67, arrows:'to'},
+    {from: 6, to: 74, arrows:'to'},
+    {from: 6, to: 80, arrows:'to'},
+
     {from: 7, to: 8, arrows:'to'},
     {from: 7, to: 9, arrows:'to'},
     {from: 7, to: 72, arrows:'to'},
+    {from: 7, to: 69, arrows:'to'},
     {from: 7, to: 4, arrows:'to'},
+      
     
     {from: 9, to: 72, arrows:'to'},
-
+    {from: 9, to: 69, arrows:'to'},
+    {from: 9, to: 80, arrows:'to'},
+      
     {from: 10, to: 72, arrows:'to'},
     {from: 10, to: 69, arrows:'to'},
     {from: 10, to: 80, arrows:'to'},
 
-    {from: 12, to: 11, arrows:'to'},
     {from: 12, to: 6, arrows:'to'},
-
+    {from: 12, to: 11, arrows:'to'},
 
     {from: 13, to: 2, arrows:'to'},
     {from: 13, to: 6, arrows:'to'},
     {from: 13, to: 69, arrows: 'to'},
-
-
 
     {from: 16, to: 1, arrows:'to'},
     {from: 16, to: 2, arrows:'to'},
@@ -246,8 +255,16 @@
     {from: 26, to: 80, arrows:'to'},
   
     {from: 27, to: 9, arrows:'to'},
+
+    {from: 28, to: 69, arrows:'to'},
+    {from: 28, to: 72, arrows:'to'},
+
+
+    {from: 29, to: 72, arrows:'to'},
+    {from: 29, to: 9, arrows:'to'},
+    {from: 29, to: 69, arrows:'to'},
+    {from: 29, to: 80, arrows:'to'},
       
-  
     {from: 32, to: 69, arrows:'to'},
 
     {from: 34, to: 9, arrows:'to'},
@@ -257,6 +274,41 @@
     {from: 35, to: 4, arrows:'to'},
     {from: 35, to: 6, arrows:'to'},
     {from: 35, to: 19, arrows:'to'},
+
+    {from: 36, to: 2, arrows:'to'},
+    {from: 36, to: 3, arrows:'to'},
+    {from: 36, to: 6, arrows:'to'},
+    {from: 36, to: 11, arrows:'to'},
+    {from: 36, to: 69, arrows:'to'},
+    {from: 36, to: 80, arrows:'to'},
+
+    {from: 38, to: 30, arrows:'to'},
+    {from: 38, to: 37, arrows:'to'},      
+      {from: 38, to: 70, arrows:'to'},
+      {from: 38, to: 1, arrows:'to'},
+      {from: 38, to: 6, arrows:'to'},
+    {from: 38, to: 4, arrows:'to'},      
+      
+    {from: 42, to: 2, arrows:'to'},
+    {from: 42, to: 4, arrows:'to'},
+    {from: 42, to: 6, arrows:'to'},
+    {from: 42, to: 7, arrows:'to'},
+    {from: 42, to: 9, arrows:'to'},
+    {from: 42, to: 11, arrows:'to'},
+    {from: 42, to: 14, arrows:'to'},
+    {from: 42, to: 15, arrows:'to'},
+    {from: 42, to: 19, arrows:'to'},
+    {from: 42, to: 27, arrows:'to'},
+    {from: 42, to: 28, arrows:'to'},
+    {from: 42, to: 29, arrows:'to'},
+    {from: 42, to: 39, arrows:'to'},
+    {from: 42, to: 40, arrows:'to'},
+    {from: 42, to: 41, arrows:'to'},
+    {from: 42, to: 69, arrows:'to'},
+    {from: 42, to: 72, arrows:'to'},
+    {from: 42, to: 80, arrows:'to'},
+
+      
 
     {from: 69, to: 67, arrows:'to'},
 
@@ -269,7 +321,6 @@
     {from: 82, to: 88, arrows:'to'},
     {from: 82, to: 200, arrows:'to'},
       
-
     {from: 85, to: 67, arrows:'to'},
     {from: 85, to: 81, arrows:'to'},
     {from: 85, to: 82, arrows:'to'},
@@ -360,7 +411,6 @@
     {from: 106, to: 32, arrows:'to'},
     {from: 106, to: 96, arrows:'to'},
     {from: 106, to: 200, arrows:'to'},
-      
 
     {from: 107, to: 1, arrows:'to'},
     {from: 107, to: 3, arrows:'to'},
@@ -371,7 +421,6 @@
     {from: 107, to: 96, arrows:'to'},
     {from: 107, to: 108, arrows:'to'},
     {from: 107, to: 200, arrows:'to'},
-      
       
     {from: 108, to: 2, arrows:'to'},
     {from: 108, to: 3, arrows:'to'},
@@ -409,8 +458,6 @@
     {from: 121, to: 81, arrows:'to'},
     {from: 121, to: 111, arrows:'to'},
     {from: 121, to: 124, arrows:'to'},
-      
-      
       
     {from: 200, to: 68, arrows:'to'},
     {from: 200, to: 67, arrows:'to'},
