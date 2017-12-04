@@ -117,7 +117,16 @@
     //IPLD system components
     {id: 200, label: 'Cid', group: 4},
     {id: 201, label: 'ipld-format', group: 4},
-    {id: 202, label: 'ipld-cbor', group: 4}
+      {id: 202, label: 'ipld-cbor', group: 4},
+
+      // External deps
+      {id: 400, label: 'Proto', group: 5},
+      {id: 401, label: 'GoProc', group: 5},
+      {id: 402, label: 'GoProcCtx', group: 5},
+      {id: 403, label: 'Base32', group: 5},
+      {id: 404, label: '', group: 5},
+      {id: 405, label: '', group: 5}
+
   ]);
 
   // create an array with edges
@@ -308,8 +317,6 @@
     {from: 42, to: 72, arrows:'to'},
     {from: 42, to: 80, arrows:'to'},
 
-      
-
     {from: 69, to: 67, arrows:'to'},
 
     {from: 72, to: 69, arrows:'to'},
@@ -319,7 +326,11 @@
     {from: 82, to: 86, arrows:'to'},
     {from: 82, to: 87, arrows:'to'},
     {from: 82, to: 88, arrows:'to'},
-    {from: 82, to: 200, arrows:'to'},
+      {from: 82, to: 200, arrows:'to'},
+
+      {from: 84, to: 67, arrows:'to'},
+      {from: 84, to: 81, arrows:'to'},
+      {from: 84, to: 200, arrows:'to'},
       
     {from: 85, to: 67, arrows:'to'},
     {from: 85, to: 81, arrows:'to'},
